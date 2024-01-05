@@ -122,7 +122,7 @@ export default function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem >
-          <Link href="/" legacyBehavior passHref >
+          <Link href="https://github.com/20bec023IIITDWD/DishDelights" legacyBehavior passHref >
             <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${'dark:bg-slate-900'}`} >
             <Github className="mr-2 h-5 w-5" />
             {/* <span>GitHub</span> */}
