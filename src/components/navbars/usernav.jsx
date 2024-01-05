@@ -1,10 +1,10 @@
 "use client"
-
+import Image from 'next/image'
 import {
     Cloud,
     CreditCard,
     Github,
-    Keyboard,
+
     LifeBuoy,
     LogOut,
     Mail,
@@ -35,24 +35,29 @@ import {
   } from "@/components/ui/dropdown-menu"
 import { useEffect, useState } from "react"
 import { Auth } from "../auth/authenticate"
- 
+import { signOut } from "next-auth/react"
+ import { Suspense } from "react"
+ import { useSession } from "next-auth/react"
   export function UserMenu() {
-    
+    const apiUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : `http://localhost:3000`;
+    const { data: session, status, update } = useSession()
     const [user,setUser] = useState(false);
-    
+
     
     useEffect(()=>{
   setUser(user)
     },[user])
     return (
-      
+      <Suspense>
       <DropdownMenu>
-     {user?(<Auth user={user} setUser={setUser}/>):
+     {status!="authenticated"?(<Auth />):
         (<><DropdownMenuTrigger asChild>
-          <Button variant="outline" className=" dark:bg-slate-900">User</Button>
+          <Button variant="outline" className=" dark:bg-slate-900">{session?.user?.name}</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56 dark:bg-slate-900">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuLabel>{session?.user?.email}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>
@@ -96,6 +101,7 @@ import { Auth } from "../auth/authenticate"
                   <DropdownMenuItem>
                     <MessageSquare className="mr-2 h-4 w-4" />
                     <span>Message</span>
+                    <img src={session.user.image} alt="" className=" max-w-fit" />
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
@@ -125,14 +131,14 @@ import { Auth } from "../auth/authenticate"
             <span>API</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={()=>{setUser(!user)}}>
+          <DropdownMenuItem onClick={()=>{signOut({callbackUrl: apiUrl})}}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
           
         </DropdownMenuContent></>)}
-      </DropdownMenu>
+      </DropdownMenu></Suspense>
     )
   }
   

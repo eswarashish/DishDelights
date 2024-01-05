@@ -1,11 +1,16 @@
+"use client"
+import { useState,useEffect } from 'react'
+import RecipeBoard from '@/components/layouts/recipeboard'
 import React from 'react'
+import Dataserver from "@/lib/server/dataserve"
+const ff = async() => {
 
-const ff = () => {
+  const data = await Dataserver();
+
   return (
     <div>
-        <br />
-        <br />
-       
+      
+       <RecipeBoard recipes={data}></RecipeBoard>
     </div>
   )
 }

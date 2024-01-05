@@ -1,7 +1,15 @@
 import {signIn} from "next-auth/react"
+const str = process.env.VERCEL_URL
+? `https://${process.env.VERCEL_URL}/recipes`
+: `http://localhost:3000/recipes`;
+
+
 
 export default async function GitLog(){
+  console.log(str);
    signIn('github',{
-    callbackUrl: process.env.NEXTAUTH_URL
+    callbackUrl: str
+ 
+ 
   });
 }
