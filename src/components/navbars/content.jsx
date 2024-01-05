@@ -4,7 +4,7 @@ import React, { forwardRef } from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-
+import Image from "next/image";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -58,7 +58,7 @@ export default function NavigationMenuDemo() {
         rel="noopener noreferrer"
       >
         <div className="mb-2 mt-4 text-lg font-medium">
-          <img
+          <Image
             src="https://avatars.githubusercontent.com/u/139895814?s=200&v=4"
             alt="Shadcn Logo"
             className="h-8 w-8 mr-2 inline"
@@ -73,7 +73,7 @@ export default function NavigationMenuDemo() {
     </NavigationMenuLink>
   </li>
   <ListItem href="https://nextjs.org/" title="Next.js">
-    <img
+    <Image
       src="https://www.svgrepo.com/show/354113/nextjs-icon.svg"
       alt="Next.js Logo"
       className="h-6 w-6 mr-2 inline"
@@ -81,15 +81,15 @@ export default function NavigationMenuDemo() {
     The React framework for building fast and scalable web applications.
   </ListItem>
   <ListItem href="https://next-auth.js.org/" title="NextAuth">
-    <img
-      src="https://next-auth.js.org/img/logo/logo-sm.png"
+    <Image
+      src="https://next-auth.js.org/Image/logo/logo-sm.png"
       alt="NextAuth Logo"
       className="h-6 w-6 mr-2 inline"
     />
     Authentication library for Next.js applications.
   </ListItem>
   <ListItem href="https://www.mongodb.com/" title="MongoDB">
-    <img
+    <Image
       src="https://1000logos.net/wp-content/uploads/2020/08/MongoDB-Emblem.jpg"
       alt="MongoDB Logo"
       className="h-6 w-6 mr-2 inline"

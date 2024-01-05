@@ -42,7 +42,7 @@ const Readrecipe = (props) => {
         Home
       </Link>
       <Link href={`/profile/${recipe.useremail}`} className="text-lg font-semibold leading-6 text-black dark:text-slate-300">
-        Author's Profile <span aria-hidden="true">→</span>
+        Authors Profile <span aria-hidden="true">→</span>
       </Link>
     </div>
   </div>
